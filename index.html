@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joshua Waiswa | Software Engineer</title>
+    <style>
+        :root {
+            --primary-color: #2d3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --light-bg: #f5f7fa;
+            --border-color: #ddd;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height:
+            1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .header-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header-content h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+        
+        nav {
+            background-color: var(--secondary-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+        }
+        
+        nav ul li {
+            margin: 0 1rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--light-bg);
+        }
+        
+        section {
+            padding: 3rem 0;
+        }
+        
+        section:nth-child(even) {
+            background-color: white;
+        }
+        
+        h2.section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        h2.section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        .profile-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .skills-box {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            flex: 1 1 300px;
+        }
+        
+        .skills-box h3 {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+        
+        .skills-list {
+            list-style: none;
+        }
+        
+        .skills-list li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .skills-list li::before {
+            content: '•';
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .more-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .skill-tag {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        
+        .experience-item {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .experience-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .experience-company {
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+        
+        .experience-date {
+            color: #777;
+        }
+        
+        .project {
+            margin-top: 2rem;
+            border-left: 3px solid var(--secondary-color);
+            padding-left: 1.5rem;
+        }
+        
+        .project h4 {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tasks-list, .achievements-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        .tasks-list li, .achievements-list li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .tasks-list li::before {
+            content: '→';
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+        }
+        
+        .achievements-list li::before {
+            content: '✓';
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+        }
+        
+        .technologies {
+            margin-top: 1rem;
+        }
+        
+        .technologies h5 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .tech-tag {
+            background-color: var(--light-bg);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--primary-color);
+        }
+        
+        .interests-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        
+        .education-item {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .education-header {
+            margin-bottom: 1rem;
+        }
+        
+        .education-degree {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .education-school {
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+        
+        .education-date {
+            color: #777;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2rem;
+            }
+            
+            .header-content h2 {
+                font-size: 1.2rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 0.5rem;
+            }
+            
+            .experience-header {
+                flex-direction: column;
+            }
+            
+            .experience-date {
+                margin-top: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Joshua Waiswa</h1>
+                <h2>Software Engineer RoR</h2>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#interests">Interests</a></li>
+                <li><a href="#education">Education</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <section id="profile">
+        <div class="container">
+            <h2 class="section-title">Profile</h2>
+            <div class="profile-content">
+                <p>Joshua is a seasoned Software Engineer with a decade of experience in the industry, specializing in developing Ruby on Rails projects for the past eight years. With a proven track record of delivering projects that meet high industry standards, Joshua possesses strong leadership, communication, and collaborative skills essential for project success.</p>
+                <br>
+                <p>His expertise spans various industries including e-commerce, Fintech, Education, and Banking, where he has successfully executed projects tailored to meet specific industry requirements.</p>
+                <br>
+                <p>Joshua's notable project involvement includes Tuily, a platform offering credit services to users, where he demonstrated exceptional leadership by overseeing a team of five individuals, effectively translating client expectations into technical solutions, and coordinating with stakeholders for timely and cost-effective project delivery.</p>
+                <br>
+                <p>Joshua's exceptional technical proficiency, coupled with his strong soft skills, enables him to drive project success and contribute significantly to the development of innovative and impactful software solutions.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-container">
+                <div class="skills-box">
+                    <h3>Main Skills</h3>
+                    <ul class="skills-list">
+                        <li>Ruby on Rails</li>
+                        <li>API design and integration</li>
+                        <li>Javascript</li>
+                        <li>Database Management (MySql, PostgreSql)</li>
+                        <li>Infrastructure Management (AWS)</li>
+                    </ul>
+                </div>
+                <div class="skills-box">
+                    <h3>Additional Skills</h3>
+                    <div class="more-skills">
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Nodejs</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">Leadership</span>
+                        <span class="skill-tag">Stimulus js</span>
+                        <span class="skill-tag">Nest js</span>
+                        <span class="skill-tag">Typescript</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Heroku</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Digital Ocean</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Elastic Search</span>
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">Technical Writing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            
+            <!-- Koombea -->
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="experience-title">Software Developer</h3>
+                        <div class="experience-company">Koombea</div>
+                    </div>
+                    <div class="experience-date">Sept 2021 - Present</div>
+                </div>
+                
+                <!-- Kunstrux Project -->
+                <div class="project">
+                    <h4>Kunstrux Project</h4>
+                    <p>Kunstrux is a software platform reinventing the relationship between lenders, builders, and subcontractors. This is achieved by providing subcontractors a platform to manage projects, and workers, allow contractors to get loans, and track expenditure throughout the project.</p>
+                    
+                    <h5>Tasks and Activities</h5>
+                    <ul class="tasks-list">
+                        <li>Developed the backend API architecture to support the application's functionality and data management needs.</li>
+                        <li>Implemented and managed the database systems used to store and retrieve user information securely.</li>
+                        <li>Conducted in-depth research on the implementation of various features to enhance the application's capabilities.</li>
+                        <li>Integrated with banking services to offer account functionalities to users, ensuring seamless financial transactions.</li>
+                        <li>Implemented KYC verification applications for enhanced user verification and security measures.</li>
+                        <li>Established integrations with loan management and credit services to expand financial offerings within the application.</li>
+                        <li>Integrated Twilio services for effective communication and messaging functionalities within the platform.</li>
+                        <li>Collaborated closely with the mobile development team to optimize the utilization of the built API for mobile applications.</li>
+                        <li>Worked in tandem with the DevOps team to efficiently deploy and maintain the application's infrastructure.</li>
+                        <li>Authored technical documentation outlining the functionality and usage of different features within the application to assist users and stakeholders.</li>
+                    </ul>
+                    
+                    <h5>Achievements</h5>
+                    <ul class="achievements-list">
+                        <li>Developed a secure and authenticated API using Ruby on Rails, utilized by the mobile team to incorporate Android and iOS applications effortlessly. The API was extensively documented with Swagger.</li>
+                        <li>Collaborated with a banking institution to enable application users to create accounts and conduct ACH transactions through the backend system.</li>
+                        <li>Built a seamless search functionality using ElasticSearch and tailored queries for swift information retrieval within the application.</li>
+                        <li>Implemented robust logging and monitoring mechanisms like New Relic and Sentry to supervise the application's performance.</li>
+                        <li>Collaborated with the DevOps team to deploy production and staging environments on AWS, seamlessly integrating with various services like Twilio and Firebase.</li>
+                        <li>Led a team of developers and also interpreted technical product specifications from the client into actionable tasks.</li>
+                        <li>Integrated the backend with multiple service providers like Twilio, Firebase, and OneSignal to construct and enhance features within the application.</li>
+                    </ul>
+                    
+                    <div class="technologies">
+                        <h5>Technologies Used</h5>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Ruby</span>
+                            <span class="tech-tag">Ruby on Rails</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">Puma</span>
+                            <span class="tech-tag">Sidekiq</span>
+                            <span class="tech-tag">RSpec</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Webpack</span>
+                            <span class="tech-tag">Yarn</span>
+                            <span class="tech-tag">GitHub</span>
+                            <span class="tech-tag">CI/CD pipelines</span>
+                            <span class="tech-tag">AWS S3</span>
+                            <span class="tech-tag">Devise</span>
+                            <span class="tech-tag">New Relic</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                            <span class="tech-tag">React.js</span>
+                            <span class="tech-tag">Stimulus.js</span>
+                            <span class="tech-tag">Hotwire</span>
+                            <span class="tech-tag">Trello</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tuily Project -->
+                <div class="project">
+                    <h4>Tuily Project</h4>
+                    <p>Tuily offers a business credit card specifically designed for small and medium-sized enterprises (SMEs) in Colombia, with the key benefit of no management fees. This financial product aims to support business growth by enabling organized payments, meeting spending goals, and promoting savings.</p>
+                    
+                    <h5>Tasks and Activities</h5>
+                    <ul class="tasks-list">
+                        <li>Collaborated with stakeholders in the development of new features and functionalities using Ruby on Rails.</li>
+                        <li>Integrated the application with various third-party platforms such as Netsuite, Metamap, and Tutuka.</li>
+                        <li>Implemented unit testing for project tests to ensure high code quality and prevent regressions.</li>
+                        <li>Worked with team members to promptly identify and resolve bugs.</li>
+                        <li>Utilized Stimulus JS controllers to establish a seamless and user-friendly experience.</li>
+                        <li>Employed Tailwind CSS for front-end tasks to enhance visual presentation and user interaction.</li>
+                        <li>Conducted thorough code reviews to maintain code quality and uphold industry standards and best practices.</li>
+                    </ul>
+                    
+                    <h5>Achievements</h5>
+                    <ul class="achievements-list">
+                        <li>Developed the backend API architecture to support the application's functionality and data management needs.</li>
+                        <li>Implemented and managed the database systems used to store and retrieve user information securely.</li>
+                        <li>Conducted in-depth research on the implementation of various features to enhance the application's capabilities.</li>
+                        <li>Integrated with banking services to offer account functionalities to users, ensuring seamless financial transactions.</li>
+                        <li>Implemented KYC verification applications for enhanced user verification and security measures.</li>
+                        <li>Established integrations with loan management and credit services to expand financial offerings within the application.</li>
+                        <li>Integrated Twilio services for effective communication and messaging functionalities within the platform.</li>
+                        <li>Collaborated closely with the mobile development team to optimize the utilization of the built API for mobile applications.</li>
+                        <li>Worked in tandem with the DevOps team to efficiently deploy and maintain the application's infrastructure.</li>
+                        <li>Authored technical documentation outlining the functionality and usage of different features within the application to assist users and stakeholders.</li>
+                    </ul>
+                    
+                    <div class="technologies">
+                        <h5>Technologies Used</h5>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Ruby</span>
+                            <span class="tech-tag">Ruby on Rails</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">Puma</span>
+                            <span class="tech-tag">Sidekiq</span>
+                            <span class="tech-tag">RSpec</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Webpack</span>
+                            <span class="tech-tag">Yarn</span>
+                            <span class="tech-tag">GitHub</span>
+                            <span class="tech-tag">CI/CD pipelines</span>
+                            <span class="tech-tag">AWS S3</span>
+                            <span class="tech-tag">Devise</span>
+                            <span class="tech-tag">New Relic</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                            <span class="tech-tag">React.js</span>
+                            <span class="tech-tag">Stimulus.js</span>
+                            <span class="tech-tag">Hotwire</span>
+                            <span class="tech-tag">Trello</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Checkin Project -->
+                <div class="project">
+                    <h4>Checkin Project</h4>
+                    <p>This was an application that was used by internal workmates to track there time, bill clients of the work done and generate invoices.</p>
+                    
+                    <h5>Tasks and Activities</h5>
+                    <ul class="tasks-list">
+                        <li>Collaborated with stakeholders to identify new features and functionality for web applications developed in Ruby on Rails.</li>
+                        <li>Developed and implemented new features using Ruby on Rails to enhance the user experience.</li>
+                        <li>Integrated third-party applications such as NetSuite and Google to improve the application's functionality.</li>
+                        <li>Conducted project testing using RSPEC and Capybara to maintain code quality and prevent regressions.</li>
+                        <li>Implemented caching using Redis to optimize application performance.</li>
+                        <li>Planned and executed algorithms to address complex issues and enhance the application's usability.</li>
+                        <li>Collaborated with QA and team members to identify and resolve bugs promptly.</li>
+                        <li>Utilized Stimulus JS controllers and Turbo Rails to create a seamless and user-friendly interface.</li>
+                        <li>Led thorough code reviews to ensure quality and adherence to industry standards.</li>
+                    </ul>
+                    
+                    <h5>Achievements</h5>
+                    <ul class="achievements-list">
+                        <li>Implemented a user-friendly platform to track user's time throughout the day, enhancing productivity and time management.</li>
+                        <li>Ensured secure authentication and access control measures were in place to protect user data and privacy.</li>
+                        <li>Developed a comprehensive dashboard to monitor user activity and provide valuable insights.</li>
+                        <li>Produced clear and concise technical documentation to assist users and team members in understanding the project.</li>
+                        <li>Engineered algorithms to effectively manage and analyze user data for improved decision-making and user experience.</li>
+                    </ul>
+                    
+                    <div class="technologies">
+                        <h5>Technologies Used</h5>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Ruby</span>
+                            <span class="tech-tag">Ruby on Rails</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">Puma</span>
+                            <span class="tech-tag">Sidekiq</span>
+                            <span class="tech-tag">RSpec</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Webpack</span>
+                            <span class="tech-tag">Yarn</span>
+                            <span class="tech-tag">GitHub</span>
+                            <span class="tech-tag">CI/CD pipelines</span>
+                            <span class="tech-tag">AWS S3</span>
+                            <span class="tech-tag">Devise</span>
+                            <span class="tech-tag">New Relic</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                            <span class="tech-tag">React.js</span>
+                            <span class="tech-tag">Stimulus.js</span>
+                            <span class="tech-tag">Hotwire</span>
+                            <span class="tech-tag">Trello</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Odetta -->
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="experience-title">Software Developer</h3>
+                        <div class="experience-company">Odetta</div>
+                    </div>
+                    <div class="experience-date">January 2020 - Jun 2021</div>
+                </div>
+                
+                <p>Odetta is a platform designed to enable users to securely buy and sell their used cars with confidence and ease. The platform offers a seamless experience with personalized support, where dedicated executives manage every step of the process—from car certification and promotion to delivery.</p>
+                
+                <h5>Tasks and Activities</h5>
+                <ul class="tasks-list">
+                    <li>Developed software in Ruby on Rails, HTML, CSS, and JavaScript, following best practices for high-quality code and efficient performance.</li>
+                    <li>Managed databases in MySql, PostgreSQL, Redis, and Sidekiq to maintain data integrity and optimize data processing.</li>
+                    <li>Spearheaded the backend infrastructure development for the company's software, utilizing various tools and methodologies to ensure smooth operation and performance efficiency.</li>
+                    <li>Implemented integrations between Odetta software and external service providers, CMS, and other applications using REST APIs and protocols for seamless data transfer and communication.</li>
+                    <li>Utilized project planning and team leadership skills to effectively oversee development projects, ensuring the timely delivery of top-notch software products.</li>
+                    <li>Conducted thorough code reviews to uphold code quality and industry standards.</li>
+                    <li>Leveraged expertise in software development, project planning, REST APIs, and team leadership to drive successful software projects.</li>
+                    <li>Led a diverse team consisting of front-end developers, DevOps engineers, and scraping engineers to collaborate and deliver successful software projects.</li>
+                </ul>
+                
+                <h5>Achievements</h5>
+                <ul class="achievements-list">
+                    <li>Spearheaded the implementation of an efficient search functionality within the application to enhance user experience.</li>
+                    <li>Designed and developed a comprehensive dashboard for different administrators to support informed decision-making processes.</li>
+                    <li>Integrated with service providers to improve application performance and introduce new features.</li>
+                    <li>Authored detailed technical documentation to guide users and team members in understanding and utilizing the system effectively.</li>
+                    <li>Facilitated the establishment of a robust infrastructure hosted on AWS, maintaining a high uptime of more than 99% for uninterrupted service delivery.</li>
+                </ul>
+                
+                <div class="technologies">
+                    <h5>Technologies Used</h5>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Ruby</span>
+                        <span class="tech-tag">Ruby on Rails</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">Puma</span>
+                        <span class="tech-tag">Sidekiq</span>
+                        <span class="tech-tag">RSpec</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Webpack</span>
+                        <span class="tech-tag">Yarn</span>
+                        <span class="tech-tag">GitHub</span>
+                        <span class="tech-tag">CI/CD pipelines</span>
+                        <span class="tech-tag">AWS S3</span>
+                        <span class="tech-tag">Devise</span>
+                        <span class="tech-tag">New Relic</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Bootstrap CSS</span>
+                        <span class="tech-tag">React.js</span>
+                        <span class="tech-tag">Stimulus.js</span>
+                        <span class="tech-tag">Hotwire</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">Chart.js</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- BARS Alliance -->
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <h3 class="experience-title">Software Developer</h3>
+                        <div class="experience-company">BARS Alliance, LLC</div>
+                    </div>
+                    <div class="experience-date">December 2017 - January 2020</div>
+                </div>
+                
+                <p>Joshua worked on developing web3 technologies that included setting up Bitcoin nodes, Ethereum nodes, writing contracts in solidity. Also cryptocurrency exchanges were developed to consume these nodes. He monitored the entire software development process for multiple projects from inception to completion.</p>
+                
+                <h5>Tasks and Activities</h5>
+                <ul class="tasks-list">
+                    <li>Demonstrated proficiency in Linux server administration, configuring and maintaining a wide range of components including hypervisors, servers, gateways, SSL certificates, firewalls, and group policies.</li>
+                    <li>Led a team of three to efficiently develop a cryptocurrency exchange within a six-month timeframe, leveraging expertise in Ruby on Rails, project management, and team leadership.</li>
+                    <li>Established and maintained the company's Linux server environment, implementing necessary software installations, security protocols, email servers, and maintenance schedules for smooth and secure operation.</li>
+                    <li>Installed and managed various blockchain services based on Ethereum, Bitcoin, Litecoin, and Ripple, ensuring secure and efficient operations based on industry best practices.</li>
+                    <li>Effectively performed and automated server deployment, upgrades, and version release management, employing tools and techniques to ensure timely and efficient updates.</li>
+                    <li>Managed the company's GitHub code repository, utilizing best practices to maintain secure and efficient code management.</li>
+                    <li>Collaborated efficiently with remote team members to complete tasks and deliver high-quality software products.</li>
+                    <li>Leveraged skills in software development, Linux server administration, project management, and team leadership to lead successful software development projects.</li>
+                </ul>
+                
+                <h5>Achievements</h5>
+                <ul class="achievements-list">
+                    <li>Configured Bitcoin, Ethereum, and various other cryptocurrency nodes to facilitate blockchain operations.
